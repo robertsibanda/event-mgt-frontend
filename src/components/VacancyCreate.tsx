@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 // Define the shape of the event data
-interface EventData {
+interface VacancyData {
   title: string;
   date: string;
   description: string;
 }
 
-const EventCreate: React.FC = () => {
+const VacancyCreate: React.FC = () => {
   // State to hold form values
   const [title, setTitle] = useState<string>('');
   const [date, setDate] = useState<string>('');
@@ -16,7 +16,7 @@ const EventCreate: React.FC = () => {
   // Function to handle form submission
   const handleSubmit = async () => {
     // Create an object with the form data
-    const eventData: EventData = {
+    const eventData: VacancyData = {
       title,
       date,
       description,
@@ -24,7 +24,7 @@ const EventCreate: React.FC = () => {
 
     try {
       // Send POST request to the API
-      const response = await fetch('http://localhost:8000/events/', {
+      const response = await fetch('http://localhost:8080/vacancy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,4 +69,4 @@ const EventCreate: React.FC = () => {
   );
 };
 
-export default EventCreate;
+export default VacancyCreate;
