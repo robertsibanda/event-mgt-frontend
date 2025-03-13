@@ -10,9 +10,9 @@ export interface VacancyInterface {
     "posted": string,
     "title": string,
     "description": string,
-    "qualifications": string,
+    "qualifications": Array<string>,
     "requirements": string,
-    "skills": object,
+    "skills": any,
     "category": string,
     "expiry": string
 }
@@ -21,9 +21,9 @@ const vacancies = [
   {
       "id": 1,
       "organisation": "Econet Zw",
-      "expiry": null,
+      "expiry": "null",
       "category": "",
-      "posted": null,
+      "posted": "null",
       "title": "Software Developer",
       "description": "A local company is looking for a gradutae trainee developer",
       "skills": [
@@ -35,13 +35,13 @@ const vacancies = [
       "qualifications": [
           "Bsc in comp scie/equiv"
       ],
-      "requirements": null
+      "requirements": "null"
   },
   {
       "id": 2,
       "organisation": "Econet Zw",
-      "expiry": null,
-      "posted": null,
+      "expiry": "null",
+      "posted": "null",
       "title": "Software Developer",
       "description": "A local company is looking for a gradutae trainee developer",
       "category": "",
@@ -54,7 +54,7 @@ const vacancies = [
       "qualifications": [
           "Bsc in comp scie/equiv"
       ],
-      "requirements": null
+      "requirements": "null"
   }
 ]
 

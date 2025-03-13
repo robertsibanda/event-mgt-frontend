@@ -1,4 +1,3 @@
-import smile from "../img/smile.png"
 
 export interface BlogPostInterface {
     title: string,
@@ -10,7 +9,7 @@ export interface BlogPostInterface {
 
 }
 
-const BlogPost = ({title, summary, content, date, likes, reads} 
+const BlogPost = ({title, summary, content, date, reads} 
     : BlogPostInterface) => {
   return (
     <div className="blog-container">

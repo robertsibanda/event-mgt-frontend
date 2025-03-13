@@ -3,15 +3,15 @@ import "../css/vacancy-item.css"
 
 export interface VacancyItemProps {
   "id": number,
-  "organisation": number,
-  "posted": string | null,
+  "organisation": string,
+  "posted": string,
   "title": string,
   "description": string,
-  "qualifications": string,
+  "qualifications": Array<string>,
   "requirements": string,
   "category": string,
   "expiry": string,
-  "skills": object,
+  "skills": Array<string>,
   onClick: () => void;
 }
 
@@ -31,7 +31,7 @@ const VacancyItem: React.FC<VacancyItemProps> =
       <p>{qualifications.slice(0.50)}</p>
       <p>{requirements}</p>
       <div className="skills">
-        {skills.map((skill, index) => (
+        {skills.map((skill: string, index: number) => (
           <button key={index}>{skill}</button>
         ))}
       </div>

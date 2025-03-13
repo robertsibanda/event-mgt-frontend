@@ -1,10 +1,9 @@
-import React from 'react'
-import { Vacancy } from './VacancyList'
+import { VacancyInterface } from './VacancyList'
 import "../css/vacancy-details.css"
 
 // show full vacancy details on the right
 
-const VacancyDetails = ({ expiry, organisation, posted, title, description, qualifications, requirements , skills}: Vacancy) => {
+const VacancyDetails = ({ expiry, organisation, posted, title, description, qualifications, requirements , skills}: VacancyInterface) => {
   return (
     <div className='vacancy-details'>
       <h2>{title}</h2>
@@ -16,7 +15,7 @@ const VacancyDetails = ({ expiry, organisation, posted, title, description, qual
       <h4>Other requirements</h4>
       <p>{requirements}</p>
       <div className="skills">
-        {skills.map((skill, index) => (
+        {skills.map((skill: string, index: number) => (
           <button key={index}>{skill}</button>
         ))}
       </div>
