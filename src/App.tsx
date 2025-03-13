@@ -1,19 +1,19 @@
-import './App.css'
-import Heading from './components/Heading'
-import VacancyCreate from './components/VacancyCreate'
-import VacancyList from './components/VacancyList'
+import "../src/App.css"
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import VacancyList from './components/VacancyList';
+import BlogList from './components/BlogList';
 
-
-
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-    <Heading />
-    <VacancyList />
-    <VacancyCreate />
-    </>
-  )
-}
+    <Router>
+      <Routes>
+      <Route path="/" Component={VacancyList} />
+        <Route path="/blog" Component={BlogList} />
+        <Route path="/about" Component={BlogList} />
+      </Routes>
+       
+    </Router>
+  );
+};
 
-export default App
+export default App;

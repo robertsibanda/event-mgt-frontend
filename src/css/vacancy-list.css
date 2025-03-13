@@ -1,0 +1,21 @@
+@media (max-width : 600px) {
+  
+  .vacancy-list {
+    margin-left: 1em;
+  }
+
+  .bottom-section {
+    visibility: hidden;
+  }
+}
+
+
+@media (min-width: 401px) {
+  .vacancy-list {
+    margin-top: 5em;
+    margin-left: 15em;
+  }
+
+  
+
+}

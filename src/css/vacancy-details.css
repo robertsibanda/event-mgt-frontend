@@ -1,0 +1,56 @@
+.vacancy-details {
+
+    position: fixed;
+    margin-left: 3rem;
+    margin-top: 6em;
+
+    background-color: white;
+    padding: 0.1em;
+
+    max-height: 30em;
+    max-width: 35em;
+
+    min-width: 28em;
+    min-height: 26em;
+
+    padding: 0.9em;
+
+    border-radius: 0.5em;
+    box-shadow: 0cm;
+}
+
+
+.vacancy-details p {
+    color: rgb(36, 31, 31);
+}
+
+
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.vacancy-details button {
+    padding: 0.4em;
+    margin: 0.1em;
+    background-color: #20242b7a;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.apply-buttons {
+    margin-top: 1.5em;
+}
+
+.apply-buttons button {
+    color: white;
+    background-color: rgb(74, 6, 184);
+}
+
+.apply-buttons button:hover{
+    background-color: rgb(3, 17, 61);
+    color: white;
+}

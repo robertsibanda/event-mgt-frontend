@@ -1,79 +1,85 @@
 import { useState, useEffect } from "react";
-import EventDetails from "./VacancyDetails";
 import VacancyItem from "./VacancyItem";
 import VacancyDetails from "./VacancyDetails";
+import "../css/vacancy-list.css"
+import TopNav from "./TopNav";
 
-export interface Vacancy {
+export interface VacancyInterface {
     "id": number,
-    "owner": number,
-    "created": string | null,
-    "jobTitle": string,
-    "jobDescription": string,
-    "jobQualifications": string,
-    "jobRequirements": string,
+    "organisation": string,
+    "posted": string,
+    "title": string,
+    "description": string,
+    "qualifications": string,
+    "requirements": string,
+    "skills": object,
     "category": string,
     "expiry": string
 }
 
-const vacancies = 
-[
+const vacancies = [
   {
-    "id": 1,
-    "owner": 1,
-    "created": "2025-01-30T05:00:00.000+00:00",
-    "jobTitle": "bookkepper",
-    "jobDescription": "desc 1",
-    "jobQualifications": "qual 1",
-    "jobRequirements": "requirements 1",
-    "category": "accounting",
-    "expiry": "2025-03-03T05:00:00.000+00:00"
+      "id": 1,
+      "organisation": "Econet Zw",
+      "expiry": null,
+      "category": "",
+      "posted": null,
+      "title": "Software Developer",
+      "description": "A local company is looking for a gradutae trainee developer",
+      "skills": [
+          "python",
+          "java",
+          "Spring boot",
+          "django"
+      ],
+      "qualifications": [
+          "Bsc in comp scie/equiv"
+      ],
+      "requirements": null
   },
   {
-    "id": 2,
-    "owner": 2,
-    "created": null,
-    "jobTitle": "bookkepper",
-    "jobDescription": "desc 2",
-    "jobQualifications": "qual 2",
-    "jobRequirements": "requirements 2",
-    "category": "accounting 1",
-    "expiry": "2025-03-03T05:00:00.000+00:00"
-  },
-  {
-    "id": 3,
-    "owner": 2,
-    "created": "2025-02-03T05:00:00.000+00:00",
-    "jobTitle": "software developer",
-    "jobDescription": "desc 2",
-    "jobQualifications": "qual 2",
-    "jobRequirements": "requirements 2",
-    "category": "accounting 1",
-    "expiry": "2025-06-03T04:00:00.000+00:00"
+      "id": 2,
+      "organisation": "Econet Zw",
+      "expiry": null,
+      "posted": null,
+      "title": "Software Developer",
+      "description": "A local company is looking for a gradutae trainee developer",
+      "category": "",
+      "skills": [
+          "python",
+          "java",
+          "Spring boot",
+          "django"
+      ],
+      "qualifications": [
+          "Bsc in comp scie/equiv"
+      ],
+      "requirements": null
   }
 ]
 
 export default function VacancyList() {
   // State to hold the selected event details
-  const [selectedVacancy, setSelectedVacancy] = useState<Vacancy | null>(null);
+  const [selectedVacancy, setSelectedVacancy] = useState<VacancyInterface | null>(null);
 
   // State to hold the list of events
-  const [vacancy, setVacancies] = useState<Vacancy[]>([]);
+  const [vacancy, setVacancies] = useState<VacancyInterface[]>([]);
 
 
   useEffect(() => {
     setVacancies(vacancies)
-  }, [])
-
+  })
   // Fetch events from the API when the component mounts
   useEffect(() => {
     const fetchVacancies = async () => {
       try {
-        const response = await fetch("http://localhost:8080/vacancy"); // Replace with your API endpoint
+        const response = await fetch("http://localhost:8080/vacancy/"); // Replace with your API endpoint
         if (!response.ok) {
           console.log(`Error : ${response.body}`)
           throw new Error("Failed to fetch events");
         }
-        const data: Vacancy[] = await response.json(); // Assume the API returns a list of events
+        const data: VacancyInterface[] = await response.json(); // Assume the API returns a list of events
+        console.log(data)
         setVacancies(data);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -84,28 +90,30 @@ export default function VacancyList() {
   }, []);
 
   // Function to handle the event click
-  const handleEventClick = (vacancy: Vacancy) => {
+  const handleEventClick = (vacancy: VacancyInterface) => {
     setSelectedVacancy(vacancy);
   };
 
   return (
     <>
       <div>
+        <TopNav />
         <div className="top-container">
-          <div className="events-list">
+          <div className="vacancy-list">
             {vacancy.length > 0 ? (
               vacancy.map((vaca, index) => (
                 <VacancyItem
-                  key={index}
                   category={vaca.category}
+                  key={index}
                   id={vaca.id}
                   expiry={vaca.expiry}
-                  created={vaca.created}
-                  owner={vaca.owner}
-                  jobDescription={vaca.jobDescription}
-                  jobTitle={vaca.jobTitle}
-                  jobQualifications={vaca.jobQualifications}
-                  jobRequirements={vaca.jobRequirements}
+                  posted={vaca.posted}
+                  organisation={vaca.organisation}
+                  description={vaca.description}
+                  title={vaca.title}
+                  qualifications={vaca.qualifications}
+                  requirements={vaca.requirements}
+                  skills={vaca.skills}
                   onClick={() => handleEventClick(vaca)} // Pass the event to the handler
                 />
               ))
@@ -113,21 +121,22 @@ export default function VacancyList() {
               <p>Loading events...</p>
             )}
           </div>
-          <div className="event-details">
+          <div className="bottom-section">
             {selectedVacancy ? (
               <VacancyDetails
                 id={selectedVacancy.id}
-                owner={selectedVacancy.owner}
-                created={selectedVacancy.created}
-                jobDescription={selectedVacancy.jobDescription}
-                jobTitle={selectedVacancy.jobTitle}
-                jobQualifications={selectedVacancy.jobQualifications}
-                jobRequirements={selectedVacancy.jobRequirements}
+                organisation={selectedVacancy.organisation}
+                posted={selectedVacancy.posted}
+                description={selectedVacancy.description}
+                title={selectedVacancy.title}
+                qualifications={selectedVacancy.qualifications}
+                requirements={selectedVacancy.requirements}
                 category={selectedVacancy.category}
                 expiry={selectedVacancy.expiry}
+                skills={selectedVacancy.skills}
               />
             ) : (
-              <p>Select an event to see the details.</p>
+             "a"
             )}
           </div>
         </div>

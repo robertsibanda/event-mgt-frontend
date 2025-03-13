@@ -1,0 +1,50 @@
+@media (min-width: 600px)
+{
+    .apply-buttons-vacancy {
+        visibility: hidden;
+    }
+
+    .vacancy-item {
+        max-width: 10em;
+    }
+}
+
+@media (min-width: 600px) {
+   .vacancy-item {
+    min-width: 15em;
+    max-width: 20em;
+
+    min-height: 15em;
+    max-height: 18em;
+   }
+
+}
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+
+.vacancy-item {
+
+
+
+    padding: 0.8em;
+
+    flex-direction: column;
+    background-color: #ffffff;
+    margin: 1em;
+
+  
+    cursor: pointer;
+
+    border-radius: 1em;
+    box-shadow: blue;
+
+  
+}
+
+.vacancy-item p {
+    color: rgb(66, 63, 63);
+}
+
