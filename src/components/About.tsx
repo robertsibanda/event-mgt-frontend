@@ -1,9 +1,12 @@
+import TopNav from "./TopNav"
 
 function About() {
+  document.title = "About"
   return (
-    <div className="about">
-        
-    </div>
+    <>
+      <TopNav />
+    </>
+    
   )
 }
 

@@ -94,7 +94,9 @@ export default function VacancyList() {
     setSelectedVacancy(vacancy);
   };
 
+
   return (
+
     <>
       <div>
         <TopNav />
